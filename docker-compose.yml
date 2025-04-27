@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nextjs-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf # 위에 주신 nginx.conf 연결 : 메인 설정 파일
+      - ./nginx/conf.d:/etc/nginx/conf.d # 추가 conf 관리용 : 서브 설정들
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled # 사이트 설정 관리용
+    depends_on:
+      - node
+    restart: unless-stopped
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev # 개발용 Dockerfile 별도 사용
+    container_name: nextjs-node
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app # ✅ 코드 수정 시 바로 반영
+      - /app/node_modules # ✅ node_modules는 컨테이너 내부 유지
+    environment:
+      - NODE_ENV=development
+      - PORT=5173
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=Tsrtmd@3300
+      - DB_NAME=project_next
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SESSION_SECRET=your_secret_key_here
+    command: npm run dev # ✅ 개발용: next dev로 뜨게 함
+
+  mysql:
+    image: mysql:5.7
+    container_name: nextjs-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Tsrtmd@3300
+      MYSQL_DATABASE: project_next
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:latest
+    container_name: nextjs-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysql_data:
