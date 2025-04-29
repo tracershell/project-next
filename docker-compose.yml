@@ -1,4 +1,3 @@
-version: "3.9"
 
 services:
   nginx:
@@ -27,11 +26,11 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=5173
-      - DB_HOST=mysql
+      - DB_HOST=nextjs-mysql  # ✅ 아래 mysql container name : .env 도 check 할 것것
       - DB_PORT=3306
       - DB_USER=root
       - DB_PASSWORD=Tsrtmd@3300
-      - DB_NAME=project_next
+      - DB_NAME=project_next_db
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - SESSION_SECRET=your_secret_key_here
@@ -39,11 +38,11 @@ services:
 
   mysql:
     image: mysql:5.7
-    container_name: nextjs-mysql
+    container_name: nextjs-mysql    # ✅ container 실행 이름 : 위 환경 에서 사용 그리고 .env 도 check 할 것것
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: Tsrtmd@3300
-      MYSQL_DATABASE: project_next
+      MYSQL_DATABASE: project_next_db
     ports:
       - "3306:3306"
     volumes:
