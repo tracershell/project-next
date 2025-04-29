@@ -1,3 +1,4 @@
+import AdminLayout from '@/components/AdminLayout';
 import { sessionMiddleware } from '../../lib/session';
 import { runMiddleware } from '../../lib/runMiddleware';
 
@@ -21,9 +22,11 @@ export async function getServerSideProps({ req, res }) {
 }
 
 export default function AdminDashboard({ user }) {
+  console.log('✅ 로그인 유저 정보:', user); // ✅ OK
+
   return (
-    <div>
+    <AdminLayout user={user}>
       <h1>Welcome {user.username}</h1>
-    </div>
+    </AdminLayout>
   );
 }

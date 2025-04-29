@@ -1,0 +1,135 @@
+/* Top Bar */
+.top-bar {
+    background-color: #001c48;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .top-bar a {
+    color: #00aaff;
+    text-decoration: none;
+  }
+  
+  /* Navigation Bar */
+  .navbar {
+    display: flex;
+    position: relative;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .navbar .logo {
+    position: absolute;
+    left: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #066da5;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+  /* 로그인/로그아웃 버튼 */
+  .auth-buttons {
+    position: absolute;
+    right: 24px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .auth-buttons .btn-signin {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: white;
+    border: 1px solid #066da5;
+    color: #066da5;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-buttons .btn-signin:hover {
+    background-color: #e6f3fb;
+  }
+  
+  .auth-buttons .btn-get-started {
+    padding: 4px 8px;
+    background-color: #066da5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-buttons .btn-get-started:hover {
+    background-color: #055c8a;
+  }
+  
+  .username-blue {
+    color: #00aaff;
+    font-weight: bold;
+  }
+  
+  /* 메뉴 */
+  .menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .menu a:hover {
+    background-color: #cae7bf;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* 드롭다운 */
+  .menu .dropdown {
+    position: relative;
+  }
+  
+  .menu .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .menu .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .menu .dropdown .dropdown-content a {
+    color: #333;
+    padding: 4px 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .menu .dropdown .dropdown-content a:hover {
+    background-color: #9cbcf0;
+  }
+  
